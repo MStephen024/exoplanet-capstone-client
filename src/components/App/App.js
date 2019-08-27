@@ -9,6 +9,12 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
+import NasaData from '../NasaData/NasaIndex'
+
+import Favorites from '../Favorites/Favorites'
+import CreateFavorite from '../Favorites/CreateFavorite'
+import FavoriteEdit from '../Favorites/FavoriteEdit'
+
 class App extends Component {
   constructor () {
     super()
@@ -27,6 +33,8 @@ class App extends Component {
     this.setState({ alerts: [...this.state.alerts, { heading, message, variant }] })
   }
 
+  // Missing Show,  if needed
+  // Figure out nasa_id route
   render () {
     const { alerts, user } = this.state
 
@@ -53,6 +61,20 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
+          )} />
+
+          <AuthenticatedRoute user{user} path='/{nasa_api}' render={() => (
+            <NasaIndex alert={this.alert} user={user} />
+          )} />
+
+          <AuthenticatedRoute user{user} exact path='/favorites' component={Favorites} />
+
+          <AuthenticatedRoute user={user} path='/create-favorite' render={() => (
+            <CreateFavorite alert={this.alert} user={user} />
+          )} />
+
+          <AuthenticatedRoute user={user} path='/favorites/:id/edit' render={() => (
+            <FavoriteEdit alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>
