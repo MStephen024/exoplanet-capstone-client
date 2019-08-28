@@ -9,7 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-import NasaData from '../NasaData/NasaIndex'
+import NasaData from '../NasaData/NasaData'
 
 import Favorites from '../Favorites/Favorites'
 import CreateFavorite from '../Favorites/CreateFavorite'
@@ -63,11 +63,9 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
 
-          <AuthenticatedRoute user{user} path='/{nasa_api}' render={() => (
-            <NasaIndex alert={this.alert} user={user} />
-          )} />
+          <Route user={user} exact path='/exoplanets' component={NasaData} />
 
-          <AuthenticatedRoute user{user} exact path='/favorites' component={Favorites} />
+          <AuthenticatedRoute user={user} exact path='/favorites' component={Favorites} />
 
           <AuthenticatedRoute user={user} path='/create-favorite' render={() => (
             <CreateFavorite alert={this.alert} user={user} />
