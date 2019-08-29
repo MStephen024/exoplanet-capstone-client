@@ -10,9 +10,11 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
 import NasaData from '../NasaData/NasaData'
+import NasaDataTest from '../NasaData/NasaDataTest'
+import Test from '../NasaData/Test'
 
 import Favorites from '../Favorites/Favorites'
-import CreateFavorite from '../Favorites/CreateFavorite'
+// import CreateFavorite from '../Favorites/CreateFavorite'
 import FavoriteEdit from '../Favorites/FavoriteEdit'
 
 class App extends Component {
@@ -26,6 +28,8 @@ class App extends Component {
   }
 
   setUser = user => this.setState({ user })
+
+  // nasaToCreate = (planet) => this.setState({ favorite: planet })
 
   clearUser = () => this.setState({ user: null })
 
@@ -63,13 +67,15 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
 
-          <Route user={user} exact path='/exoplanets' component={NasaData} />
+          <Route exact user={user} path='/exoplanets' render={() => (
+            <NasaData alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
+          )} />
+          <Route exact user={user} path='/exoplanets2' render={() => (
+            <NasaDataTest alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
+          )} />
+          <Route path='/exoplanets/create-favorite' component={Test} />
 
           <AuthenticatedRoute user={user} exact path='/favorites' component={Favorites} />
-
-          <AuthenticatedRoute user={user} path='/create-favorite' render={() => (
-            <CreateFavorite alert={this.alert} user={user} />
-          )} />
 
           <AuthenticatedRoute user={user} path='/favorites/:id/edit' render={() => (
             <FavoriteEdit alert={this.alert} user={user} />
