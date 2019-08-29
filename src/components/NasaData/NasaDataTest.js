@@ -1,30 +1,24 @@
 import React, { Component, Fragment } from 'react'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Route, Link, withRouter } from 'react-router-dom'
-// import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
+// import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute
+
+import CreateFavorite from '../Favorites/CreateFavorite'
 
 import axios from 'axios'
 
-import CreateFavorite from '../Favorites/CreateFavorite'
-// import Test from './Test'
-
 // require('dotenv').config()
 
-class NasaData extends Component {
+class NasaDataTest extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
       exoplanets: [],
       isLoading: true,
-      planetToCreate: {},
-      formVisible: false
+      planetToCreate: {}
     }
   }
-
-  // dataCallback = (exoplanets) => {
-  //   this.setState({ exoplanets: this.state.exoplanets })
-  // }
 
   async componentDidMount () {
     try {
@@ -47,18 +41,8 @@ class NasaData extends Component {
     }
   }
 
-  handleCreateFavoriteClick (planet) {
-    console.log(planet)
-    console.log(this)
-    this.setState({ formVisible: true })
-    // get data from incoming args
-    // setState planetToCreate with data
-  }
-
   render (props) {
-    console.log('these are props in create', this.props)
     const { user } = this.props
-    console.log(this.state.exoplanets)
 
     const planetJsx = this.state.exoplanets.map(planet => (
       <Fragment key={planet.pl_name}>
@@ -73,13 +57,21 @@ class NasaData extends Component {
         </ListGroup.Item>
         <Link to={`/${planet.pl_name}/create-favorite`}>
           {user
-            ? <button onClick={ () => this.handleCreateFavoriteClick({ name: 'test' })} className="btn btn-primary">Add to your Favorites</button> : null
+            ? <button className="btn btn-primary">Add to your Favorites</button> : null
           }
         </Link>
       </Fragment>
     ))
+
     return (
       <React.Fragment>
+        <Route exact path='/:pl_name/create-favorite' render={() => (
+          <React.Fragment>
+            <h3> on /exoplanets/create-favorite </h3>
+            <CreateFavorite exoplanets={this.state.exoplanets}/>
+          </React.Fragment>
+        )}
+        />
         <ListGroup>
           <Link to="/favorites">
             {user &&
@@ -88,25 +80,9 @@ class NasaData extends Component {
           </Link>
           {this.state.exoplanets.length ? planetJsx : <li>No Planets Found :(</li>}
         </ListGroup>
-
-        <h3> Before link </h3>
-
-        <Link to='/exoplanets/create-favorite'> go! </Link>
-        { // <button onClick={ () => this.handleCreateFavoriteClick({ name: 'test' })} className="btn btn-primary">Add to your Favorites</button>
-        }
-
-        <h3> Before route </h3>
-        <Route path='exoplanets/create-favorite' render={() => (
-          <React.Fragment>
-            <h3> on /exoplanets/create-favorite </h3>
-            <CreateFavorite planet={this.state.exoplanets}/>
-          </React.Fragment>
-        )}
-        />
       </React.Fragment>
-
     )
   }
 }
 
-export default withRouter(NasaData)
+export default withRouter(NasaDataTest)
