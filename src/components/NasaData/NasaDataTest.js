@@ -4,6 +4,7 @@ import { Route, Link, withRouter } from 'react-router-dom'
 // import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute
 
 import CreateFavorite from '../Favorites/CreateFavorite'
+import Planet from './Planet'
 
 import axios from 'axios'
 
@@ -26,7 +27,6 @@ class NasaDataTest extends Component {
 
       const planets = this.state.exoplanets
       const response = await axios('https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&select=pl_name,pl_disc,pl_facility,pl_discmethod,pl_massj,dec&order=dec&format=json')
-      console.log(response.data[0])
 
       const thePlanets = function (response) {
         for (let i = 0; i < 20; i++) {
@@ -42,7 +42,7 @@ class NasaDataTest extends Component {
   }
 
   render (props) {
-    const { user } = this.props
+    const { user, alert } = this.props
 
     const planetJsx = this.state.exoplanets.map(planet => (
       <Fragment key={planet.pl_name}>
@@ -52,20 +52,23 @@ class NasaDataTest extends Component {
             <b>Discovery Year:</b> {planet.pl_disc} <br />
             <b>Discovery Facility:</b> {planet.pl_facility} <br />
             <b>Discovery Method:</b> {planet.pl_discmethod} <br />
-            <b>Mass of Jupiter:</b> {planet.massj ? planet.mass : 'Unknown'}
+            <b>Mass of Jupiter:</b> {planet.massj ? planet.massj : 'Unknown'}
           </p>
         </ListGroup.Item>
-        <Link to={`/${planet.pl_name}/create-favorite`}>
+        <Link to={`/exoplanets2/${planet.pl_name}/create-favorite`}>
           {user
             ? <button className="btn btn-primary">Add to your Favorites</button> : null
           }
         </Link>
+        <ListGroup.Item>
+          <Planet user={user} planet={planet} alert={alert} />
+        </ListGroup.Item>
       </Fragment>
     ))
 
     return (
       <React.Fragment>
-        <Route exact path='/:pl_name/create-favorite' render={() => (
+        <Route exact path='/exoplanets2/:pl_name/create-favorite' render={() => (
           <React.Fragment>
             <h3> on /exoplanets/create-favorite </h3>
             <CreateFavorite exoplanets={this.state.exoplanets}/>

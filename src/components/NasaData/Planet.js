@@ -13,38 +13,51 @@ class Planet extends Component {
       planet: null,
       formVisible: false
     }
+
+    this.goToCreate = this.goToCreate.bind(this)
   }
 
-  goToCreate (planet) {
-    console.log(planet)
+  componentDidMount () {
+    this.setState({ planet: this.props.planet })
+  }
+
+  removeForm () {
+    this.setState({ formVisible: false })
+  }
+
+  goToCreate () {
+    console.log(this.state.planet)
     this.setState({ formVisible: true })
   }
 
   render () {
-    const { planet, goToCreate } = this.state
-    const { user } = this.props
+    const { planet } = this.state
+    const { user, alert } = this.props
+    let planetJsx = ''
 
-    const planetJsx =
-    <ListGroup.Item>
-      <p>
-        <b>Planet Name:</b> {planet.pl_name} <br />
-        <b>Discovery Year:</b> {planet.pl_disc} <br />
-        <b>Discovery Facility:</b> {planet.pl_facility} <br />
-        <b>Discovery Method:</b> {planet.pl_discmethod} <br />
-        <b>Mass of Jupiter:</b> {planet.massj ? planet.mass : 'Unknown'}
-      </p>
+    if (planet) {
+      planetJsx =
+      <ListGroup.Item>
+        <p>
+          <b>Planet Name:</b> {planet.pl_name} <br />
+          <b>Discovery Year:</b> {planet.pl_disc} <br />
+          <b>Discovery Facility:</b> {planet.pl_facility} <br />
+          <b>Discovery Method:</b> {planet.pl_discmethod} <br />
+          <b>Mass of Jupiter:</b> {planet.massj ? planet.mass : 'Unknown'}
+        </p>
 
-      <Button onClick={goToCreate}>
-        Add This Planet To Stephens Favorites
-      </Button>
-      {this.state.formVisible &&
-      <CreateFavorite
-        user={user} planet={planet}
-      />
-      }
-    </ListGroup.Item>
+        <Button onClick={this.goToCreate}>
+          Add This Planet To Stephens Favorites
+        </Button>
+        {this.state.formVisible &&
+        <CreateFavorite
+          user={user} planet={planet} removeForm={this.removeForm} alert={alert}
+        />
+        }
+      </ListGroup.Item>
+    }
 
-    return (planetJsx)
+    return planetJsx
   }
 }
 

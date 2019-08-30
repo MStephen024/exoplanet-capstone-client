@@ -10,13 +10,24 @@ class CreateFavorite extends Component {
     this.state = {
       favorite: {
         planet: null,
-        tags: ''
+        tags: '',
+        pl_name: '',
+        pl_disc: '',
+        pl_facility: '',
+        pl_discmethod: '',
+        massj: ''
       }
     }
   }
 
   componentDidMount () {
-    console.log(this.props.planet)
+    const favorite = { planet: this.props.planet }
+    favorite.pl_name = favorite.planet.pl_name
+    favorite.pl_disc = favorite.planet.pl_disc
+    favorite.pl_facility = favorite.planet.pl_facility
+    favorite.pl_discmethod = favorite.planet.pl_discmethod
+    favorite.massj = favorite.planet.massj
+    this.setState({ favorite })
   }
 
    handleChange = event => {
@@ -25,6 +36,7 @@ class CreateFavorite extends Component {
 
    handleSubmit = event => {
      event.preventDefault()
+     console.log(this.state)
      axios({
        method: 'POST',
        url: `${apiUrl}/favorites`,
@@ -39,14 +51,15 @@ class CreateFavorite extends Component {
            message: 'You created a favorite!',
            variant: 'success'
          })
-         this.props.history.push(`/favorites/${response.data.favorite._id}`)
+         console.log(response.data)
+         // this.props.history.push(`/favorites/${response.data.favorite.planet._id}`)
        })
        .catch(console.error)
    }
 
    render () {
      // const { planet } = this.props
-     console.log('these are props in create', this.props)
+
      return (
        <div>
          Create Favorite Form

@@ -2,8 +2,8 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const BookForm = ({ favorite, handleChange, handleSubmit }) => (
-  <Form onClick={handleSubmit}>
+const FavoriteForm = ({ favorite, handleChange, handleSubmit }) => (
+  <Form onSubmit={handleSubmit}>
     <Form.Group controlId="tags">
       <Form.Label>Tags</Form.Label>
       <Form.Control
@@ -22,4 +22,4 @@ const BookForm = ({ favorite, handleChange, handleSubmit }) => (
   </Form>
 )
 
-export default BookForm
+export default FavoriteForm
