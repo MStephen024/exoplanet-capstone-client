@@ -13,7 +13,6 @@ import NasaData from '../NasaData/NasaData'
 
 import Favorite from '../Favorites/Favorite'
 import Favorites from '../Favorites/Favorites'
-// import CreateFavorite from '../Favorites/CreateFavorite'
 import FavoriteEdit from '../Favorites/FavoriteEdit'
 
 class App extends Component {
@@ -62,7 +61,7 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
 
-          <AuthenticatedRoute user={user} exact path='/exoplanets' render={() => (
+          <AuthenticatedRoute user={user} path='/exoplanets' render={() => (
             <NasaData alert={this.alert} user={user}/>
           )} />
 
