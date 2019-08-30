@@ -10,9 +10,8 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
 import NasaData from '../NasaData/NasaData'
-import NasaDataTest from '../NasaData/NasaDataTest'
-import Test from '../NasaData/Test'
 
+import Favorite from '../Favorites/Favorite'
 import Favorites from '../Favorites/Favorites'
 // import CreateFavorite from '../Favorites/CreateFavorite'
 import FavoriteEdit from '../Favorites/FavoriteEdit'
@@ -29,16 +28,12 @@ class App extends Component {
 
   setUser = user => this.setState({ user })
 
-  // nasaToCreate = (planet) => this.setState({ favorite: planet })
-
   clearUser = () => this.setState({ user: null })
 
   alert = ({ heading, message, variant }) => {
     this.setState({ alerts: [...this.state.alerts, { heading, message, variant }] })
   }
 
-  // Missing Show,  if needed
-  // Figure out nasa_id route
   render () {
     const { alerts, user } = this.state
 
@@ -67,15 +62,17 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
 
-          <Route exact user={user} path='/exoplanets' render={() => (
-            <NasaData alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
+          <AuthenticatedRoute user={user} exact path='/exoplanets' render={() => (
+            <NasaData alert={this.alert} user={user}/>
           )} />
-          <Route exact user={user} path='/exoplanets2' render={() => (
-            <NasaDataTest alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
-          )} />
-          <Route path='/exoplanets/create-favorite' component={Test} />
 
-          <AuthenticatedRoute user={user} exact path='/favorites' component={Favorites} />
+          <AuthenticatedRoute user={user} exact path='/favorites' render={() => (
+            <Favorites alert={this.alert} user={user} />
+          )} />
+
+          <AuthenticatedRoute user={user} exact path='/favorites/:id' render={() => (
+            <Favorite alert={this.alert} user={user} />
+          )} />
 
           <AuthenticatedRoute user={user} path='/favorites/:id/edit' render={() => (
             <FavoriteEdit alert={this.alert} user={user} />
