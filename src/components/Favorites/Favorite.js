@@ -36,7 +36,7 @@ class Favorite extends Component {
      .then(response => {
        this.props.alert({
          heading: 'Success!!!!!!',
-         message: 'You deleted your review!',
+         message: 'You deleted your favorite!',
          variant: 'success'
        })
        this.props.history.push('/favorites')
