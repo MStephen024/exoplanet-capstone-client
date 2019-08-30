@@ -26,7 +26,6 @@ class Planet extends Component {
   }
 
   goToCreate () {
-    console.log(this.state.planet)
     this.setState({ formVisible: true })
   }
 
@@ -47,7 +46,7 @@ class Planet extends Component {
         </p>
 
         <Button onClick={this.goToCreate}>
-          Add This Planet To Stephens Favorites
+          Add To My Favorites
         </Button>
         {this.state.formVisible &&
         <CreateFavorite

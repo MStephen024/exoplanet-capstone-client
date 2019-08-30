@@ -9,7 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-import NasaDataTest from '../NasaData/NasaDataTest'
+import NasaData from '../NasaData/NasaData'
 
 import Favorite from '../Favorites/Favorite'
 import Favorites from '../Favorites/Favorites'
@@ -49,9 +49,6 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route exact path='/' render={() => (
-            <NasaDataTest alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
-          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -65,16 +62,16 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
 
-          <Route exact user={user} path='/exoplanets2' render={() => (
-            <NasaDataTest alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
+          <AuthenticatedRoute user={user} exact path='/exoplanets' render={() => (
+            <NasaData alert={this.alert} user={user}/>
           )} />
 
           <AuthenticatedRoute user={user} exact path='/favorites' render={() => (
-            <Favorites alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
+            <Favorites alert={this.alert} user={user} />
           )} />
 
           <AuthenticatedRoute user={user} exact path='/favorites/:id' render={() => (
-            <Favorite alert={this.alert} user={user} updatePlanet={this.updatePlanet}/>
+            <Favorite alert={this.alert} user={user} />
           )} />
 
           <AuthenticatedRoute user={user} path='/favorites/:id/edit' render={() => (

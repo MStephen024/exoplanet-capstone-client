@@ -9,7 +9,7 @@ const FavoriteForm = ({ favorite, handleChange, handleSubmit }) => (
       <Form.Control
         type="text"
         placeholder="Enter Tags"
-        value={favorite.tags}
+        value={favorite.tags || ''}
         onChange={handleChange}
         name="tags"
         required

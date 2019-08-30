@@ -36,7 +36,6 @@ class CreateFavorite extends Component {
 
    handleSubmit = event => {
      event.preventDefault()
-     console.log(this.state)
      axios({
        method: 'POST',
        url: `${apiUrl}/favorites`,
@@ -51,18 +50,14 @@ class CreateFavorite extends Component {
            message: 'You created a favorite!',
            variant: 'success'
          })
-         console.log(response.data)
          // this.props.history.push(`/favorites/${response.data.favorite.planet._id}`)
        })
        .catch(console.error)
    }
 
    render () {
-     // const { planet } = this.props
-
      return (
        <div>
-         Create Favorite Form
          <FavoriteForm
            handleChange={this.handleChange}
            handleSubmit={this.handleSubmit}

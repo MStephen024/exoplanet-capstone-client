@@ -57,7 +57,7 @@ class Favorite extends Component {
              : ''
            }
            <Button variant="danger" onClick={this.deleteFavorite}>
-            Delete Review
+            Delete Favorite
            </Button>
          </Fragment>
        )}
