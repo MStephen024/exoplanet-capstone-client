@@ -53,7 +53,7 @@ class Favorite extends Component {
          <Fragment>
            <h1>{favorite.tags}</h1>
            {(this.props.user && favorite) && this.props.user._id === favorite.owner
-             ? <Button href={`#favorites/${favorite._id}/edit`}>Edit Favorite</Button>
+             ? <Button href={`#favorites/${favorite._id}/edit`}>Edit Tags</Button>
              : ''
            }
            <Button variant="danger" onClick={this.deleteFavorite}>

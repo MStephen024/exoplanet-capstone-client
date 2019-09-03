@@ -44,7 +44,7 @@ class Favorites extends Component {
               {favorite.pl_discmethod} <br />
               {favorite.massj} <br />
               {favorite.tags} <br />
-              <Link to={`/favorites/${favorite._id}`}><Button>Show Exoplanet</Button></Link>
+              <Link to={`/favorites/${favorite._id}`}><Button>Edit Favorite</Button></Link>
             </ListGroup.Item>
           </Fragment>
         ))
