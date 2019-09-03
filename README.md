@@ -14,13 +14,9 @@ Start by creating an account to receive full access to all of Exoplanet's featur
 * View or modify the tags for any saved exoplanet
 * Delete a favorite item
 
-## Stretch Goals and Future Features to Come!
+### Exoplanet Homepage
 
-* Users will soon be able to pin various locations using our 3rd party map
-* Users will soon be able to filter through their completed entries
-* Users will soon be able to add a picture to an entry
-* Users will soon be able to attach a timeframe to a list or goal
-* Users will soon be able to view other public lists and like or follow a list
+![Imgur](https://i.imgur.com/7MaChep.png)
 
 ### Repos and Deployment
 
