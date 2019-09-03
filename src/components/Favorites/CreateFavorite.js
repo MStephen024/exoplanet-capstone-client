@@ -50,9 +50,15 @@ class CreateFavorite extends Component {
            message: 'You created a favorite!',
            variant: 'success'
          })
-         // this.props.history.push(`/favorites/${response.data.favorite.planet._id}`)
+         this.props.history.push('/favorites')
        })
-       .catch(console.error)
+       .catch(() => {
+         this.props.alert({
+           heading: 'Error',
+           message: 'You were unable to look at favorites, Try Again!',
+           variant: 'danger'
+         })
+       })
    }
 
    render () {
