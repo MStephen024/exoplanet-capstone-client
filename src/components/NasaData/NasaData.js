@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import ListGroup from 'react-bootstrap/ListGroup'
-import { Link } from 'react-router-dom'
 // import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 
 import Planet from './Planet'
@@ -39,7 +38,7 @@ class NasaData extends Component {
     }
   }
 
-  render (props) {
+  render () {
     const { user, alert } = this.props
     const planetJsx = this.state.exoplanets.map(planet => (
       <Fragment key={planet.pl_name}>
@@ -52,11 +51,6 @@ class NasaData extends Component {
     return (
       <React.Fragment>
         <ListGroup>
-          <Link to="/favorites">
-            {user &&
-            <button className="btn btn-primary">Go to Favorites</button>
-            }
-          </Link>
           {this.state.exoplanets.length ? planetJsx : <li>No Planets Found :(</li>}
         </ListGroup>
       </React.Fragment>
