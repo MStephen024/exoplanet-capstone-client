@@ -33,7 +33,6 @@ class FavoriteEdit extends Component {
   }
 
   handleSubmit = event => {
-    console.log('this is the state', this.state)
     event.preventDefault()
     axios({
       method: 'PATCH',
