@@ -61,7 +61,11 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
 
-          <AuthenticatedRoute user={user} path='/exoplanets' render={() => (
+          <AuthenticatedRoute user={user} exact path='/exoplanets' render={() => (
+            <NasaData alert={this.alert} user={user}/>
+          )} />
+
+          <Route user={user} exact path='/' render={() => (
             <NasaData alert={this.alert} user={user}/>
           )} />
 
