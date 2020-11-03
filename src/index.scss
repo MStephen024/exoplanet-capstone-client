@@ -1,1 +1,24 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  // background-color: #808080;
+  background-image: url('./img/space.jpg');
+  // height: 100%;
+  color: #fff;
+}
+
+main {
+  height: 100%;
+}
+
+// .container-fluid {
+//   height: 100%;
+// }
+
+.nav-header {
+  background-color: #000;
+}
+
+// .full-height {
+//   height: 100%;
+// }
