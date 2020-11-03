@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
@@ -36,17 +37,22 @@ class Favorites extends Component {
       const thisUserFavorites = favorites.length
       if (thisUserFavorites) {
         favoritesJsx = favorites.map(favorite => (
-          <Fragment key={favorite.pl_name}>
-            <ListGroup.Item>
-              {favorite.pl_name} <br />
-              {favorite.pl_disc} <br />
-              {favorite.pl_facility} <br />
-              {favorite.pl_discmethod} <br />
-              {favorite.massj} <br />
-              {favorite.tags} <br />
-              <Link to={`/favorites/${favorite._id}`}><Button>Edit Favorite</Button></Link>
-            </ListGroup.Item>
-          </Fragment>
+          <Card key={favorite.pl_name} style={{ width: '18rem' }}>
+            <Card.Img variant="top" style={{ height: 250, padding: '.5rem' }}/>
+            <Card.Body>
+              <Card.Title>Card Title</Card.Title>
+              <Card.Text>
+                {favorite.pl_name} <br />
+                {favorite.pl_disc} <br />
+                {favorite.pl_facility} <br />
+                {favorite.pl_discmethod} <br />
+                {favorite.massj} <br />
+                {favorite.tags} <br />
+                <Link to={`/favorites/${favorite._id}`}><Button>Edit Favorite</Button></Link>
+              </Card.Text>
+              <Button variant="primary">Go somewhere</Button>
+            </Card.Body>
+          </Card>
         ))
       } else {
         favoritesJsx = <p>Press Home and Go Add Some Favorites</p>
