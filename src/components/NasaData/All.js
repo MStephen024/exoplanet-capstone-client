@@ -9,9 +9,10 @@ import axios from 'axios'
 
 // require('dotenv').config()
 
-class NasaData extends Component {
-  constructor () {
-    super()
+// NasaData copy
+class AllPlanets extends Component {
+  constructor (props) {
+    super(props)
 
     this.state = {
       exoplanets: [],
@@ -69,4 +70,4 @@ class NasaData extends Component {
   }
 }
 
-export default NasaData
+export default AllPlanets

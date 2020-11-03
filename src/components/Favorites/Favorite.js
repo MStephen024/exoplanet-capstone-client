@@ -46,6 +46,18 @@ class Favorite extends Component {
 
  render () {
    const { favorite } = this.state
+   let buttons = null
+
+   if (favorite) {
+     buttons = (
+       <Fragment>
+         <Button href={`#favorites/${favorite._id}/edit`}>Edit Tags</Button>
+         <Button variant="danger" onClick={this.deleteFavorite}>
+          Delete Favorite
+         </Button>
+       </Fragment>
+     )
+   }
 
    return (
      <div>
@@ -53,12 +65,10 @@ class Favorite extends Component {
          <Fragment>
            <h1>{favorite.tags}</h1>
            {(this.props.user && favorite) && this.props.user._id === favorite.owner
-             ? <Button href={`#favorites/${favorite._id}/edit`}>Edit Favorite</Button>
+             ? buttons
              : ''
            }
-           <Button variant="danger" onClick={this.deleteFavorite}>
-            Delete Favorite
-           </Button>
+
          </Fragment>
        )}
      </div>

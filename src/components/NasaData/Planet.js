@@ -45,9 +45,11 @@ class Planet extends Component {
           <b>Mass of Jupiter:</b> {planet.massj ? planet.mass : 'Unknown'}
         </p>
 
+        {user &&
         <Button onClick={this.goToCreate}>
           Add To My Favorites
         </Button>
+        }
         {this.state.formVisible &&
         <CreateFavorite
           user={user} planet={planet} removeForm={this.removeForm} alert={alert}
