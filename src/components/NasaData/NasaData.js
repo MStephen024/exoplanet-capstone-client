@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 // import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 
@@ -8,8 +10,8 @@ import axios from 'axios'
 // require('dotenv').config()
 
 class NasaData extends Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
 
     this.state = {
       exoplanets: [],
@@ -20,8 +22,6 @@ class NasaData extends Component {
 
   async componentDidMount () {
     try {
-      // const apiKey = process.env.API_KEY
-
       const planets = this.state.exoplanets
       const response = await axios('https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&select=pl_name,pl_disc,pl_facility,pl_discmethod,pl_massj,dec&order=dec&format=json')
 
@@ -42,11 +42,22 @@ class NasaData extends Component {
     const { user, alert } = this.props
     const planetJsx = this.state.exoplanets.map(planet => (
       <Fragment key={planet.pl_name}>
-        <ListGroup.Item>
-          <Planet user={user} planet={planet} alert={alert} />
-        </ListGroup.Item>
+        <Card style={{ width: '26rem' }}>
+          <Card.Img style = {{ height: 0, paddingTop: '56%' }} variant='top' image = {require('../../img/test-1.jpg')} />
+          <Card.Body>
+            <Card.Title>Card Title</Card.Title>
+            <Card.Text>
+              <Planet user={user} planet={planet} alert={alert} />
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+          </Card.Body>
+        </Card>
       </Fragment>
     ))
+
+    // <ListGroup.Item>
+    //   <Planet user={user} planet={planet} alert={alert} />
+    // </ListGroup.Item>
 
     return (
       <React.Fragment>
