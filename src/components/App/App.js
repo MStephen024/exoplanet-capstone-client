@@ -10,10 +10,14 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
 import NasaData from '../NasaData/NasaData'
+import Dashboard from '../NasaData/Dashboard'
+// import Footer from '../Header/Footer'
+// import DailyPicture from '../NasaData/PicOfDay'
+// import Landing from '../../styles/Landing'
 
-import Favorite from '../Favorites/Favorite'
-import Favorites from '../Favorites/Favorites'
-import FavoriteEdit from '../Favorites/FavoriteEdit'
+// import Favorite from '../Favorites/Favorite'
+// import Favorites from '../Favorites/Favorites'
+// import FavoriteEdit from '../Favorites/FavoriteEdit'
 
 class App extends Component {
   constructor () {
@@ -47,7 +51,7 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        <main className="container">
+        <main className="container-fluid">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -60,25 +64,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-
-          <AuthenticatedRoute user={user} exact path='/exoplanets' render={() => (
-            <NasaData alert={this.alert} user={user}/>
+          <Route user={user} path='/' render={() => (
+            <Dashboard alert={this.alert} user={user}/>
           )} />
-
-          <Route user={user} exact path='/' render={() => (
-            <NasaData alert={this.alert} user={user}/>
-          )} />
-
-          <AuthenticatedRoute user={user} exact path='/favorites' render={() => (
-            <Favorites alert={this.alert} user={user} />
-          )} />
-
-          <AuthenticatedRoute user={user} exact path='/favorites/:id' render={() => (
-            <Favorite alert={this.alert} user={user} />
-          )} />
-
-          <AuthenticatedRoute user={user} path='/favorites/:id/edit' render={() => (
-            <FavoriteEdit alert={this.alert} user={user} />
+          <Route path='/a' render={() => (
+            <NasaData />
           )} />
         </main>
       </Fragment>

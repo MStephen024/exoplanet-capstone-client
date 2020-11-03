@@ -4,17 +4,17 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
-    <Nav.Link href="#favorites">Favorites</Nav.Link>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link href="#/" className="nav-bg">Home</Nav.Link>
+    <Nav.Link href="#favorites" className="nav-bg">Favorites</Nav.Link>
+    <Nav.Link href="#change-password" className="nav-bg">Change Password</Nav.Link>
+    <Nav.Link href="#sign-out" className="nav-bg">Sign Out</Nav.Link>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <Nav.Link href="#sign-up" className="nav-bg">Sign Up</Nav.Link>
+    <Nav.Link href="#sign-in" className="nav-bg">Sign In</Nav.Link>
   </Fragment>
 )
 
@@ -24,7 +24,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar className="nav-header" variant="dark" expand="md">
     <Navbar.Brand href="#">
       Exoplanets
     </Navbar.Brand>
