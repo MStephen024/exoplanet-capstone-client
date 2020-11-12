@@ -43,7 +43,7 @@ class NasaData extends Component {
     const planetJsx = this.state.exoplanets.map(planet => (
       <Fragment key={planet.pl_name}>
         <Card style={{ width: '26rem' }}>
-          <Card.Img style = {{ height: 0, paddingTop: '56%' }} variant='top' image = {require('../../img/test-1.jpg')} />
+          <Card.Img style = {{ height: 0, paddingTop: '56%' }} variant='top' />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
             <Card.Text>
