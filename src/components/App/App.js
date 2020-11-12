@@ -9,8 +9,9 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-import NasaData from '../NasaData/NasaData'
+// import NasaData from '../NasaData/NasaData'
 import Dashboard from '../NasaData/Dashboard'
+import AllPlanets from '../NasaData/AllPlanets'
 // import Footer from '../Header/Footer'
 // import DailyPicture from '../NasaData/PicOfDay'
 // import Landing from '../../styles/Landing'
@@ -51,7 +52,8 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        <main className="container-fluid">
+        <h4 className="disclaimer">[11/09] Currently Under Refactoring Process</h4>
+        <main>
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -64,13 +66,15 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route user={user} path='/' render={() => (
+          <Route user={user} exact path='/' render={() => (
             <Dashboard alert={this.alert} user={user}/>
           )} />
-          <Route path='/a' render={() => (
-            <NasaData />
-          )} />
         </main>
+        <div className="test">
+          <Route path='/a' render={() => (
+            <AllPlanets />
+          )} />
+        </div>
       </Fragment>
     )
   }
