@@ -1,19 +1,79 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  // background-color: #808080;
-  background-image: url('./img/space.jpg');
+  background-color: #F4EADE;
+  // border: 3px solid blue;
   // height: 100%;
-  color: #fff;
 }
 
-main {
+html {
+  background: url('./img/backdropA.jpg') no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  // border: 5px solid green;
   height: 100%;
+  border-left: -20px;
 }
 
-// .container-fluid {
-//   height: 100%;
-// }
+.card {
+  background-color: #fff;
+}
+
+.card-link {
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.planets {
+  // text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 151px;
+  width: 151px;
+}
+
+.new-container {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.test {
+  background-image: url('./img/backdropA.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-left: 5px solid tan;
+  border-right: 5px solid tan;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.testy {
+  border: 1px solid red;
+  color: #fff;
+  display: flex;
+  flex-flow: column wrap;
+  // height: 500px;
+  // column-count: 2;
+  // text-align: left;
+  // margin-left: 20px;
+  // display: flex;
+}
+
+.disclaimer {
+  background-color: black;
+  color: #f00;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.column {
+  flex: 50%;
+}
 
 .nav-header {
   background-color: #000;
