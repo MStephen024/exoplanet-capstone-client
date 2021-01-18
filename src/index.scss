@@ -7,7 +7,7 @@ body {
 }
 
 html {
-  background: url('./img/backdropA.jpg') no-repeat center fixed;
+  // background: url('./img/backdropA.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,13 +17,27 @@ html {
   border-left: -20px;
 }
 
-.card {
-  background-color: #fff;
+.card-background {
+  border: 5px solid #ffa500;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.cardFrame {
+  border: 5px solid black;
+  margin: 2rem;
 }
 
 .card-link {
   padding-bottom: 1rem;
   padding-left: 1rem;
+}
+
+.dashboard {
+  background-color: #fff;
+  border: 0 3rem 0 3rem;
 }
 
 .planets {
@@ -43,7 +57,7 @@ html {
 }
 
 .test {
-  background-image: url('./img/backdropA.jpg');
+  // background-image: url('./img/backdropA.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   border-left: 5px solid tan;
@@ -77,4 +91,9 @@ html {
 
 .nav-header {
   background-color: #000;
+}
+
+.border1 {
+  border-color: green;
+  border: 2px solid;
 }

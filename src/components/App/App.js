@@ -52,29 +52,25 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        <h4 className="disclaimer">[11/09] Currently Under Refactoring Process</h4>
-        <main>
-          <Route path='/sign-up' render={() => (
-            <SignUp alert={this.alert} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn alert={this.alert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword alert={this.alert} user={user} />
-          )} />
-          <Route user={user} exact path='/' render={() => (
-            <Dashboard alert={this.alert} user={user}/>
-          )} />
-        </main>
-        <div className="test">
-          <Route path='/a' render={() => (
-            <AllPlanets />
-          )} />
-        </div>
+        { /* <h4 className="disclaimer">[11/09] Currently Under Refactoring Process</h4> */ }
+        <Route path='/sign-up' render={() => (
+          <SignUp alert={this.alert} setUser={this.setUser} />
+        )} />
+        <Route path='/sign-in' render={() => (
+          <SignIn alert={this.alert} setUser={this.setUser} />
+        )} />
+        <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+          <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
+        )} />
+        <AuthenticatedRoute user={user} path='/change-password' render={() => (
+          <ChangePassword alert={this.alert} user={user} />
+        )} />
+        <Route user={user} exact path='/' render={() => (
+          <Dashboard alert={this.alert} user={user}/>
+        )} />
+        <Route path='/a' render={() => (
+          <AllPlanets />
+        )} />
       </Fragment>
     )
   }

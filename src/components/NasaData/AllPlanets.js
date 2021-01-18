@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
+import Planet1 from './Planet1'
 // import { Card } from 'react-bootstrap'
 
 // This class is going to control the component that renders all the planets.
@@ -16,6 +17,7 @@ class AllPlanets extends Component {
     try {
       const planets = this.state.exoplanets
       const response = await axios('https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&select=pl_name,pl_disc,pl_facility,pl_discmethod,pl_massj,dec&order=dec&format=json')
+      // console.log(response)
       const allPlanets = () => {
         for (let i = 0; i < 20; i++) {
           planets.push(response.data[i])
@@ -42,16 +44,20 @@ class AllPlanets extends Component {
   render () {
     const planetCard = this.state.exoplanets.map(exo => (
       <div key={exo.pl_name} className="testy">
-        <h3>{exo.pl_name}</h3>
+        <h3>Exoplanet Name: {exo.pl_name}</h3>
         <h6>Discovery Date: {exo.pl_disc}</h6>
         <p>Discovery Facility: {exo.pl_facility}</p>
       </div>
     ))
-    // const pagination =
     return (
       <Fragment>
-        {planetCard}
         {console.log(this.state.exoplanets)}
+        <Planet1
+          key={planetCard.pl_name}
+          name={planetCard.pl_name}
+          date={planetCard.pl_disc}
+          facility={planetCard.pl_facility}
+        />
       </Fragment>
     )
   }
