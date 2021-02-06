@@ -52,7 +52,10 @@ class Planet extends Component {
         }
         {this.state.formVisible &&
         <CreateFavorite
-          user={user} planet={planet} removeForm={this.removeForm} alert={alert}
+          user={user}
+          planet={planet}
+          removeForm={this.removeForm}
+          alert={alert}
         />
         }
       </ListGroup.Item>

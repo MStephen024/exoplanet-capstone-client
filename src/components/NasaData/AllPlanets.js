@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
-import Planet1 from './Planet1'
+import ExoData from './ExoData'
 // import { Card } from 'react-bootstrap'
 
 // This class is going to control the component that renders all the planets.
@@ -52,7 +52,7 @@ class AllPlanets extends Component {
     return (
       <Fragment>
         {console.log(this.state.exoplanets)}
-        <Planet1
+        <ExoData
           key={planetCard.pl_name}
           name={planetCard.pl_name}
           date={planetCard.pl_disc}

@@ -47,7 +47,11 @@ class NasaData extends Component {
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
             <Card.Text>
-              <Planet user={user} planet={planet} alert={alert} />
+              <Planet
+                user={user}
+                planet={planet}
+                alert={alert}
+              />
             </Card.Text>
             <Button variant="primary">Go somewhere</Button>
           </Card.Body>

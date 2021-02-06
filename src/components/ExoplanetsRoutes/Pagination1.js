@@ -1,16 +1,16 @@
 import React from 'react'
 // import Pagination from 'react-bootstrap/Pagination'
 
-const Pagination = ({ exosPerPage, totalExos, setCurrentPage }) => {
+const Pagination1 = ({ exosPerPage, exoTotal, setCurrentPage }) => {
   const pageNumbers = []
-  const pageLimit = Math.ceil(totalExos / exosPerPage)
+  const pageLimit = Math.ceil(exoTotal / exosPerPage)
 
   for (let i = 1; i <= pageLimit; i++) {
     pageNumbers.push(i)
   }
 
   return (
-    <nav>
+    <nav className="pg1-test">
       <ul className="pagination">
         {pageNumbers.map(num => (
           <li key={num} className="page-item">
@@ -24,4 +24,4 @@ const Pagination = ({ exosPerPage, totalExos, setCurrentPage }) => {
   )
 }
 
-export default Pagination
+export default Pagination1

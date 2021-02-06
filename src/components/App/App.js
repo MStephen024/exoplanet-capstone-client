@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -9,16 +9,14 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-// import NasaData from '../NasaData/NasaData'
-import Dashboard from '../NasaData/Dashboard'
-import AllPlanets from '../NasaData/AllPlanets'
-// import Footer from '../Header/Footer'
-// import DailyPicture from '../NasaData/PicOfDay'
-// import Landing from '../../styles/Landing'
+// import Home from '../ExoplanetsRoutes/Home'
+import Exoplanets from '../ExoplanetsRoutes/Exoplanets'
+// import Dashboard1 from '../ExoplanetsRoutes/Dashboard1'
+import ExoShow from '../ExoplanetsRoutes/ExoShow'
 
-// import Favorite from '../Favorites/Favorite'
-// import Favorites from '../Favorites/Favorites'
-// import FavoriteEdit from '../Favorites/FavoriteEdit'
+// import FaveIndexTest from '../FavoritesRoute/FaveIndexTest'
+// import FaveShowTest from '../FavoritesRoute/FaveShowTest'
+// import FaveEditTest from '../FavoritesRoute/FaveEditTest'
 
 class App extends Component {
   constructor () {
@@ -52,7 +50,9 @@ class App extends Component {
             message={alert.message}
           />
         ))}
-        { /* <h4 className="disclaimer">[11/09] Currently Under Refactoring Process</h4> */ }
+        <h4 className="disclaimer">Under Construction</h4>
+
+        { /* Auth Routes */ }
         <Route path='/sign-up' render={() => (
           <SignUp alert={this.alert} setUser={this.setUser} />
         )} />
@@ -65,15 +65,29 @@ class App extends Component {
         <AuthenticatedRoute user={user} path='/change-password' render={() => (
           <ChangePassword alert={this.alert} user={user} />
         )} />
-        <Route user={user} exact path='/' render={() => (
-          <Dashboard alert={this.alert} user={user}/>
+
+        { /* Home */ }
+        <Route exact path='/' component={Exoplanets} />
+
+        { /* Exoplanet Routes */ }
+        <Route exact path='/exoplanets' render={() => (
+          <Exoplanets alert={this.alert} user={user}/>
         )} />
-        <Route path='/a' render={() => (
-          <AllPlanets />
-        )} />
+        <Route exact path='/exoplanets/:id' component={ExoShow} />
+
+        { /* Favorites Routes */ }
+        { /* <Route exact path='favorites' render={() => (
+          <FaveIndexTest user={user}/>
+        )} /> */ }
+        { /* <Route exact path='favorites/:id' render={() => (
+          <FaveShowTest user={user}/>
+        )} /> */ }
+        { /* <Route exact path='favorites/:id/edit' render={() => (
+          <FaveEditTest user={user}/>
+        )} /> */ }
       </Fragment>
     )
   }
 }
 
-export default App
+export default withRouter(App)
