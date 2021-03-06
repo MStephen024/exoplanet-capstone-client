@@ -1,13 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-color: #F4EADE;
+  // background-color: #F4EADE;
+  background: url('./img/space.jpg');
   // border: 3px solid blue;
   // height: 100%;
 }
 
 html {
-  background: url('./img/backdropA.jpg') no-repeat center fixed;
+  // background: url('./img/backdropA.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,13 +18,36 @@ html {
   border-left: -20px;
 }
 
-.card {
-  background-color: #fff;
+.card-background {
+  // border: 5px solid #ffa500;
+}
+
+.cardFrame {
+  border: 5px solid black;
+  margin: 2rem;
 }
 
 .card-link {
   padding-bottom: 1rem;
   padding-left: 1rem;
+}
+
+.dashboard {
+  background-color: #fff;
+  border: 0 3rem 0 3rem;
+}
+
+.dashFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.dashHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .planets {
@@ -43,7 +67,7 @@ html {
 }
 
 .test {
-  background-image: url('./img/backdropA.jpg');
+  // background-image: url('./img/backdropA.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   border-left: 5px solid tan;
@@ -53,7 +77,7 @@ html {
 }
 
 .testy {
-  border: 1px solid red;
+  // border: 1px solid red;
   color: #fff;
   display: flex;
   flex-flow: column wrap;
@@ -79,6 +103,29 @@ html {
   background-color: #000;
 }
 
-// .full-height {
-//   height: 100%;
-// }
+.border1 {
+  // border-color: green;
+  border: 2px solid;
+}
+
+.ds1-test {
+  background-color: #F4EADE;
+  // border: 5px solid red;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 0 2rem;
+}
+
+.dh1-test {
+  // border: 5px solid orange;
+}
+
+.exocard-test {
+  // border: 5px solid yellow;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.pg1-test {
+  // border: 5px solid green;
+}
