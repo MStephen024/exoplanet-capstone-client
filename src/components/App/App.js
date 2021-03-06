@@ -9,19 +9,16 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-<<<<<<< HEAD
 // import NasaData from '../NasaData/NasaData'
-import Dashboard from '../NasaData/Dashboard'
-import AllPlanets from '../NasaData/AllPlanets'
+// import Dashboard from '../NasaData/Dashboard'
+// import AllPlanets from '../NasaData/AllPlanets'
 // import Footer from '../Header/Footer'
 // import DailyPicture from '../NasaData/PicOfDay'
 // import Landing from '../../styles/Landing'
-=======
 // import Home from '../ExoplanetsRoutes/Home'
 import Exoplanets from '../ExoplanetsRoutes/Exoplanets'
 // import Dashboard1 from '../ExoplanetsRoutes/Dashboard1'
 import ExoShow from '../ExoplanetsRoutes/ExoShow'
->>>>>>> development
 
 // import FaveIndexTest from '../FavoritesRoute/FaveIndexTest'
 // import FaveShowTest from '../FavoritesRoute/FaveShowTest'
