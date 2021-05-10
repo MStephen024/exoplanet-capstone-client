@@ -41,7 +41,6 @@ class Dashboard extends Component {
   }
 
   showModal = () => {
-    console.log('yerrrr')
     this.setState({ showModal: true })
   }
 

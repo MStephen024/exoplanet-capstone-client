@@ -1,5 +1,5 @@
 import React from 'react'
-// import Pagination from 'react-bootstrap/Pagination'
+import Pagination from 'react-bootstrap/Pagination'
 
 const Pagination1 = ({ exosPerPage, exoTotal, setCurrentPage }) => {
   const pageNumbers = []
@@ -10,17 +10,17 @@ const Pagination1 = ({ exosPerPage, exoTotal, setCurrentPage }) => {
   }
 
   return (
-    <nav className="pg1-test">
+    <Pagination className="pg1-test">
       <ul className="pagination">
         {pageNumbers.map(num => (
-          <li key={num} className="page-item">
-            <a onClick={() => setCurrentPage(num)} href="!#" className="page-link">
+          <Pagination.Item key={num} className="page-item">
+            <a onClick={() => setCurrentPage(num)} className="page-link">
               {num}
             </a>
-          </li>
+          </Pagination.Item>
         ))}
       </ul>
-    </nav>
+    </Pagination>
   )
 }
 
