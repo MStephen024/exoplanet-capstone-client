@@ -68,7 +68,6 @@ class AllPlanets extends Component {
 =======
     return (
       <Fragment>
-        {console.log(this.state.exoplanets)}
         <ExoData
           key={planetCard.pl_name}
           name={planetCard.pl_name}

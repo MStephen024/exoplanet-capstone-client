@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 
-import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
-import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
+// import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
+// import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
-import SignUp from '../SignUp/SignUp'
-import SignIn from '../SignIn/SignIn'
-import SignOut from '../SignOut/SignOut'
-import ChangePassword from '../ChangePassword/ChangePassword'
+// import SignUp from '../SignUp/SignUp'
+// import SignIn from '../SignIn/SignIn'
+// import SignOut from '../SignOut/SignOut'
+// import ChangePassword from '../ChangePassword/ChangePassword'
 
 // import NasaData from '../NasaData/NasaData'
 // import Dashboard from '../NasaData/Dashboard'
@@ -43,11 +43,11 @@ class App extends Component {
   }
 
   render () {
-    const { alerts, user } = this.state
+    // const { alerts, user } = this.state
 
     return (
       <Fragment>
-        <Header user={user} />
+        { /* <Header user={user} />
         {alerts.map((alert, index) => (
           <AutoDismissAlert
             key={index}
@@ -55,11 +55,13 @@ class App extends Component {
             variant={alert.variant}
             message={alert.message}
           />
-        ))}
-        <h4 className="disclaimer">Under Construction</h4>
+        ))} */ }
+
+        <Header />
+        { /* <h4 className="disclaimer">Under Construction</h4> */ }
 
         { /* Auth Routes */ }
-        <Route path='/sign-up' render={() => (
+        { /* <Route path='/sign-up' render={() => (
           <SignUp alert={this.alert} setUser={this.setUser} />
         )} />
         <Route path='/sign-in' render={() => (
@@ -70,15 +72,15 @@ class App extends Component {
         )} />
         <AuthenticatedRoute user={user} path='/change-password' render={() => (
           <ChangePassword alert={this.alert} user={user} />
-        )} />
+        )} /> */ }
 
         { /* Home */ }
         <Route exact path='/' component={Exoplanets} />
 
         { /* Exoplanet Routes */ }
-        <Route exact path='/exoplanets' render={() => (
+        { /* <Route exact path='/exoplanets' render={() => (
           <Exoplanets alert={this.alert} user={user}/>
-        )} />
+        )} /> */ }
         <Route exact path='/exoplanets/:id' component={ExoShow} />
 
         { /* Favorites Routes */ }

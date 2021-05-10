@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import DashHeader1 from './DashHeader1'
+// import DashHeader1 from './DashHeader1'
 // import ExoShow from './ExoShow'
-// import { Link } from 'react-router-dom'
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import ExoCard from '../Misc/ExoCard'
 import Pagination1 from './Pagination1'
 
 import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
 class Exoplanets extends Component {
   constructor (props) {
@@ -13,15 +13,24 @@ class Exoplanets extends Component {
     this.state = {
       currentPage: 1,
       exoplanets: [],
-      exosPerPage: 174
+      exosPerPage: 174,
+      exo: {}
     }
     this.setCurrentPage = this.setCurrentPage.bind(this)
   }
 
   componentDidMount () {
-    axios('https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json')
-      .then(res => this.setState({ exoplanets: res.data }))
-      .catch(err => console.error(err))
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/`
+    })
+      .then(response => {
+        this.setState({ exoplanets: response.data })
+      })
+  }
+
+  handleChange = (e) => {
+    e.preventDefault()
   }
 
   setCurrentPage (pageNum) {
@@ -35,35 +44,27 @@ class Exoplanets extends Component {
     const currentExos = exoplanets.slice(indexOfFirstExo, indexOfLastExo)
 
     const exoCardsJSX = currentExos.map((exo, ind) => (
-      <Card key={exo.pl_name} className="card-background" style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title>
-            { /* <Link to={`/exoplanets/${exo.pl_name}`}>{exo.pl_name}</Link> */ }
-          </Card.Title>
-          <Card.Subtitle>{exo.pl_hostname}</Card.Subtitle>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroupItem>Facility:{exo.pl_facility}</ListGroupItem>
-          <ListGroupItem>Mass of Jupiter: {exo.pl_bmassj ? exo.pl_bmassj : 'N/A'}</ListGroupItem>
-          <ListGroupItem>Exo Radiance: {exo.ra}</ListGroupItem>
-        </ListGroup>
-      </Card>
+      <ExoCard
+        key={ind}
+        exo={exo}
+        index={ind}
+      />
     ))
 
     return (
-      <div className="ds1-test">
-        <DashHeader1
-          totalExos={exoplanets.length}
-        />
+      <div className="exo-backdrop">
+        <div><h1 className="text-center dh1-test">Total Exoplanets Showing: {!exoplanets.length ? 'loading new worlds...' : exoplanets.length}</h1></div>
 
-        {currentExos.length > 0 ? <div className="exocard-test">{exoCardsJSX}</div> : 'Loading All Exoplanets...'}
-        {console.log(exoplanets)}
+        <div className="card-container">
+          {currentExos.length > 0 ? <div className="exocards">{exoCardsJSX}</div> : ''}
+        </div>
 
         <Pagination1
+          className="col-md-3"
           exosPerPage={exosPerPage}
           exoTotal={exoplanets.length}
           setCurrentPage={this.setCurrentPage}
-          onClick={(e) => e.preventDefault()}
+          onSubmit={this.handleChange}
         />
       </div>
     )

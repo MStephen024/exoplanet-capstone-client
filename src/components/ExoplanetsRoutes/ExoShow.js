@@ -1,57 +1,66 @@
 import React, { Component } from 'react'
+import ExoTableSystem from '../Misc/ExoTableSystem'
+import ExoTablePlanet from '../Misc/ExoTablePlanet'
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
-// import apiURL from '../../apiConfig'
 import axios from 'axios'
+import apiUrl from '../../apiConfig'
 
 class ExoShow extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      exo: null
+      planet: {}
     }
   }
 
-  // componentDidMount () {
-  //   // const { match } = this.props
-  //   axios(`${apiURL}/exoplanets/${this.props.match.params.id}`)
-  //     // .then(response => console.log(response))
-  //     .then(response => this.setState({ exo: response }))
-  //     .catch(console.error)
-  // }
-
-  async componentDidMount () {
-    try {
-      console.log('hi')
-      const response = await axios(`https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json/${this.props.match.params.pl_name}`)
-      this.setState({ movie: response.data.movie })
-      console.log(response)
-    } catch (error) {
-      console.error(error)
-    }
+  componentDidMount () {
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/exoplanets/${this.props.match.params.id}`
+    })
+      .then(response => {
+        this.setState({ planet: response.data })
+      })
   }
 
-  // addToFaves = async () => {
-  //   try {
-  //     this.setState({ added: true })
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
+  handleChange = (e) => {
+    e.preventDefault()
+  }
 
   render () {
-    // const { exo } = this.state
-    // let exoJSX = ''
-
-    // if (exo) {
-    //   exoJSX = 'full exo info?'
-    // } else {
-    //   exoJSX = 'Loading Exoplanet info'
-    // }
-
+    const { planet } = this.state
     return (
-      <div>
-        <h3>Exoplanet Title</h3>
-        <button>Add Exo To Faves</button>
+      <div className="exo-backdrop">
+        <div className="show-container">
+          <div className="text-center name-img">
+            <h1>{planet.pl_name}</h1>
+          </div>
+          <div className="table-container">
+            <ExoTableSystem
+              moonNum={planet.sy_mnum}
+              exoNum={planet.sy_pnum}
+              starNum={planet.sy_snum}
+              stellarRad={planet.st_rad}
+              starAge={planet.st_age}
+              starDens={planet.st_dens}
+              rowupdate={planet.rowupdate}
+            />
+            <ExoTablePlanet
+              discMethod={planet.discoverymethod}
+              discYear={planet.disc_year}
+              discFac={planet.disc_facility}
+              discTele={planet.disc_telescope}
+              earthMass={planet.pl_masse}
+              orbitPer={planet.pl_orbper}
+              exoRad={planet.pl_rade}
+            />
+          </div>
+        </div>
+        <Link to="/">
+          <Button variant="primary" onSubmit={this.handleChange}>Back to Exoplanets</Button>
+        </Link>
       </div>
     )
   }
